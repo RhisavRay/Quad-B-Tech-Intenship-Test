@@ -24,7 +24,7 @@ fn main() {
 
     // Prompt the user to enter the target value
     println!("Enter the target value:");
-    
+
     let mut input = String::new();
     io::stdin().read_line(&mut input).expect("Failed to read line");
     let target: i32 = input.trim().parse().expect("Please enter a valid integer");
