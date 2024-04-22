@@ -1,3 +1,5 @@
+use std::io;
+
 fn is_prime(n: u64) -> bool {
     if n <= 1 {
         return false;
@@ -15,9 +17,19 @@ fn is_prime(n: u64) -> bool {
 
 fn main() {
 
-    // Test cases
-    println!("Is 17 prime? {}", is_prime(17)); // true
-    println!("Is 20 prime? {}", is_prime(20)); // false
-    println!("Is 0 prime? {}", is_prime(0)); // false
-    println!("Is 1 prime? {}", is_prime(1)); // false
+    // Prompt the user to enter a number
+    println!("Enter a number:");
+
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+
+    // Parse the input into an unsigned 64-bit integer
+    let input: u64 = input.trim().parse().expect("Please enter a valid number");
+
+    // Check if the input number is prime
+    if is_prime(input) {
+        println!("{} is a prime number", input);
+    } else {
+        println!("{} is not a prime number", input);
+    }
 }
