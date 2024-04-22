@@ -1,3 +1,5 @@
+use std::io;
+
 fn kth_smallest(arr: &[i32], k: usize) -> Option<i32> {
     if k == 0 || k > arr.len() {
         return None; // k is out of bounds
@@ -40,10 +42,32 @@ fn partition(arr: &mut [i32], left: usize, right: usize) -> usize {
 }
 
 fn main() {
-    let arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
-    let k = 4;
 
-    match kth_smallest(&arr, k) {
+    // Prompt the user to enter the array
+    println!("Enter the array of integers separated by spaces:");
+
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+
+    // Parse the input into a vector of integers
+    let arr: Vec<i32> = input
+        .trim()
+        .split_whitespace()
+        .map(|x| x.parse().expect("Invalid input"))
+        .collect();
+
+    // Prompt the user to enter the value of k
+    println!("Enter the value of k:");
+
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+    let k: usize = input.trim().parse().expect("Please enter a valid integer");
+
+    // Convert the vector into a mutable slice for in-place modification
+    let mut arr = arr.as_slice().to_owned();
+
+    // Find the kth smallest element
+    match kth_smallest(&mut arr, k) {
         Some(val) => println!("The {}th smallest element is: {}", k, val),
         None => println!("Invalid input!"),
     }
