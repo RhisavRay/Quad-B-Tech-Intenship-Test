@@ -21,7 +21,7 @@ fn main() {
     // Call the function to find the first occurrence of the target
     match find_first_occurrence(&arr, target) {
 
-        Some(index) => println!("The first occurrence of {} is at index {}", target, index),
+        Some(index) => println!("The first occurrence of the target \"{}\" is at index {}", target, index),
         None => println!("{} not found in the array", target),
     }
 }
