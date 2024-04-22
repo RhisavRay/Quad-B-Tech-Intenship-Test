@@ -1,3 +1,5 @@
+use std::io;
+
 fn longest_common_prefix(strings: &[&str]) -> String {
     if strings.is_empty() {
         return String::new(); // If the array is empty, return an empty string
@@ -17,10 +19,20 @@ fn longest_common_prefix(strings: &[&str]) -> String {
 }
 
 fn main() {
-    // Test cases
-    let strings1 = ["flower", "flow", "flight"];
-    let strings2 = ["dog", "racecar", "car"];
-    
-    println!("Longest common prefix of strings1: {}", longest_common_prefix(&strings1));
-    println!("Longest common prefix of strings2: {}", longest_common_prefix(&strings2));
+
+    // Prompt the user to enter the words
+    println!("Enter the words separated by spaces:");
+
+    // Read the input from the user
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+
+    // Split the input string into words
+    let words: Vec<&str> = input.trim().split_whitespace().collect();
+
+    // Calculate the longest common prefix
+    let prefix = longest_common_prefix(&words);
+
+    // Print the longest common prefix
+    println!("Longest common prefix: {}", prefix);
 }
