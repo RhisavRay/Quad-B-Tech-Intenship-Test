@@ -24,5 +24,5 @@ fn main() {
     // Test cases
     println!("{}", is_palindrome("level")); // true
     println!("{}", is_palindrome("hello")); // false
-    println!("{}", is_palindrome("A man a plan a canal Panama")); // true
+    println!("{}", is_palindrome("A man a plan a c a nalP a nam a")); // true
 }
