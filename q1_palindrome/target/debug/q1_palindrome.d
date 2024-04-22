@@ -1,0 +1,1 @@
+C:\Users\rhisa\OneDrive\Desktop\Rohan's\ Study\ Stuff\Rust\ Files\Quad-B-Tech-Intenship-Test\q1_palindrome\target\debug\q1_palindrome.exe: C:\Users\rhisa\OneDrive\Desktop\Rohan's\ Study\ Stuff\Rust\ Files\Quad-B-Tech-Intenship-Test\q1_palindrome\src\main.rs
