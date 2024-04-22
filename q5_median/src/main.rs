@@ -1,3 +1,5 @@
+use std::io;
+
 fn median(arr: &[i32]) -> f64 {
     let len = arr.len();
 
@@ -15,10 +17,22 @@ fn median(arr: &[i32]) -> f64 {
 
 fn main() {
 
-    // Test cases
-    let arr1 = [1, 2, 3, 4, 5];
-    let arr2 = [1, 2, 3, 4, 5, 6];
+    // Prompt the user to enter the array elements
+    println!("Enter the sorted array of integers (space-separated):");
 
-    println!("Median of arr1: {}", median(&arr1)); // 3.0
-    println!("Median of arr2: {}", median(&arr2)); // 3.5
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+
+    // Parse the input into a vector of integers
+    let arr: Vec<i32> = input
+        .trim()
+        .split_whitespace()
+        .map(|x| x.parse().expect("Invalid input"))
+        .collect();
+
+    // Calculate the median of the array
+    let median_val = median(&arr);
+
+    // Print the median
+    println!("Median of the array: {}", median_val);
 }
