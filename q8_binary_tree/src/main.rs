@@ -1,5 +1,6 @@
 use std::rc::Rc;
 use std::cell::RefCell;
+use std::io;
 
 // Definition of a binary tree node
 #[derive(Debug, PartialEq, Eq)]
@@ -20,6 +21,31 @@ impl TreeNode {
     }
 }
 
+// Function to construct a binary tree from user input
+fn construct_tree() -> Option<Rc<RefCell<TreeNode>>> {
+    println!("Enter the value of the node (or -1 to represent null):");
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+
+    let val: i32 = input.trim().parse().expect("Please enter a valid integer");
+
+    if val == -1 {
+        return None; // Null node
+    }
+
+    let node = Rc::new(RefCell::new(TreeNode::new(val)));
+
+    println!("Enter the left child of node {}: ", val);
+    let left_child = construct_tree();
+    node.borrow_mut().left = left_child;
+
+    println!("Enter the right child of node {}: ", val);
+    let right_child = construct_tree();
+    node.borrow_mut().right = right_child;
+
+    Some(node)
+}
+
 fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
     match root {
         Some(node) => {
@@ -33,22 +59,11 @@ fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
 }
 
 fn main() {
-    // Example binary tree
-    let root = Some(Rc::new(RefCell::new(TreeNode {
-        val: 3,
-        left: Some(Rc::new(RefCell::new(TreeNode {
-            val: 9,
-            left: None,
-            right: None,
-        }))),
-        right: Some(Rc::new(RefCell::new(TreeNode {
-            val: 20,
-            left: Some(Rc::new(RefCell::new(TreeNode::new(15)))),
-            right: Some(Rc::new(RefCell::new(TreeNode::new(7)))),
-        }))),
-    })));
+
+    println!("Construct the binary tree:");
+    let root = construct_tree();
 
     // Calculate the maximum depth of the tree
     let depth = max_depth(root);
-    println!("Maximum depth of the tree: {}", depth); // Output: Maximum depth of the tree: 3
+    println!("Maximum depth of the tree: {}", depth);
 }
