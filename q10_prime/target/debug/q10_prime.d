@@ -1,0 +1,1 @@
+C:\Users\rhisa\OneDrive\Desktop\Rohan's\ Study\ Stuff\Rust\ Files\Quad-B-Tech-Intenship-Test\q10_prime\target\debug\q10_prime.exe: C:\Users\rhisa\OneDrive\Desktop\Rohan's\ Study\ Stuff\Rust\ Files\Quad-B-Tech-Intenship-Test\q10_prime\src\main.rs
